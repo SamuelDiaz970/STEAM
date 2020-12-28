@@ -61,3 +61,958 @@ Troubleshooting hints:
 09:28:57 INFO  : Platform repository initialization has completed.
 09:28:57 INFO  : Registering command handlers for Vitis TCF services
 09:28:59 INFO  : Successfully done query RDI_DATADIR 
+09:59:51 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+10:02:09 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:02:11 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+10:02:11 INFO  : 'jtag frequency' command is executed.
+10:02:12 INFO  : Context for 'APU' is selected.
+10:02:12 INFO  : System reset is completed.
+10:02:15 INFO  : 'after 3000' command is executed.
+10:02:15 INFO  : Context for 'APU' is selected.
+10:02:16 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:02:16 INFO  : 'configparams force-mem-access 1' command is executed.
+10:02:16 INFO  : Context for 'APU' is selected.
+10:02:16 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+10:02:16 INFO  : 'ps7_init' command is executed.
+10:02:16 INFO  : 'ps7_post_config' command is executed.
+10:02:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:02:17 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:02:17 INFO  : 'configparams force-mem-access 0' command is executed.
+10:02:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:02:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:02:17 INFO  : 'con' command is executed.
+10:02:17 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:02:17 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+10:03:10 INFO  : Disconnected from the channel tcfchan#1.
+10:03:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:03:10 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+10:03:10 INFO  : 'jtag frequency' command is executed.
+10:03:10 INFO  : Context for 'APU' is selected.
+10:03:10 INFO  : System reset is completed.
+10:03:13 INFO  : 'after 3000' command is executed.
+10:03:13 INFO  : Context for 'APU' is selected.
+10:03:15 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:03:15 INFO  : 'configparams force-mem-access 1' command is executed.
+10:03:15 INFO  : Context for 'APU' is selected.
+10:03:15 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+10:03:15 INFO  : 'ps7_init' command is executed.
+10:03:15 INFO  : 'ps7_post_config' command is executed.
+10:03:15 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:15 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:03:15 INFO  : 'configparams force-mem-access 0' command is executed.
+10:03:15 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:03:15 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:15 INFO  : 'con' command is executed.
+10:03:15 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:03:15 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+10:04:32 INFO  : Disconnected from the channel tcfchan#2.
+10:04:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:04:32 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+10:04:32 INFO  : 'jtag frequency' command is executed.
+10:04:32 INFO  : Context for 'APU' is selected.
+10:04:32 INFO  : System reset is completed.
+10:04:35 INFO  : 'after 3000' command is executed.
+10:04:35 INFO  : Context for 'APU' is selected.
+10:04:37 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:04:37 INFO  : 'configparams force-mem-access 1' command is executed.
+10:04:37 INFO  : Context for 'APU' is selected.
+10:04:37 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+10:04:37 INFO  : 'ps7_init' command is executed.
+10:04:37 INFO  : 'ps7_post_config' command is executed.
+10:04:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:04:37 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:04:37 INFO  : 'configparams force-mem-access 0' command is executed.
+10:04:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:04:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:04:37 INFO  : 'con' command is executed.
+10:04:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:04:37 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+10:05:48 INFO  : Successfully done sdx_reload_mss "C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/ps7_cortexa9_0/domain_ps7_cortexa9_0/bsp/system.mss"
+10:06:21 INFO  : (SwPlaform) Successfully done setParamInSpec 
+10:06:23 INFO  : (SwPlaform) Successfully done setParamInSpec 
+10:06:27 INFO  : (SwPlatform) Successfully done update_mss 
+10:06:27 INFO  : Successfully done sdx_reload_mss "C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/ps7_cortexa9_0/domain_ps7_cortexa9_0/bsp/system.mss"
+10:07:09 INFO  : Result from executing command 'getProjects': design_1_wrapper
+10:07:09 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+10:07:09 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+10:07:09 INFO  : Updating application flags with new BSP settings...
+10:07:10 INFO  : Successfully updated application flags for project STEAM_V2.
+10:07:31 INFO  : Disconnected from the channel tcfchan#3.
+10:07:31 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:07:32 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+10:07:32 INFO  : 'jtag frequency' command is executed.
+10:07:32 INFO  : Context for 'APU' is selected.
+10:07:32 INFO  : System reset is completed.
+10:07:35 INFO  : 'after 3000' command is executed.
+10:07:35 INFO  : Context for 'APU' is selected.
+10:07:37 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:07:37 INFO  : 'configparams force-mem-access 1' command is executed.
+10:07:37 INFO  : Context for 'APU' is selected.
+10:07:37 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+10:07:37 INFO  : 'ps7_init' command is executed.
+10:07:37 INFO  : 'ps7_post_config' command is executed.
+10:07:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:07:37 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:07:37 INFO  : 'configparams force-mem-access 0' command is executed.
+10:07:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:07:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:07:37 INFO  : 'con' command is executed.
+10:07:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:07:37 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+10:08:04 INFO  : Disconnected from the channel tcfchan#6.
+10:08:04 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:08:04 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+10:08:04 INFO  : 'jtag frequency' command is executed.
+10:08:04 INFO  : Context for 'APU' is selected.
+10:08:04 INFO  : System reset is completed.
+10:08:07 INFO  : 'after 3000' command is executed.
+10:08:07 INFO  : Context for 'APU' is selected.
+10:08:07 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:08:07 INFO  : 'configparams force-mem-access 1' command is executed.
+10:08:07 INFO  : Context for 'APU' is selected.
+10:08:07 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+10:08:07 INFO  : 'ps7_init' command is executed.
+10:08:07 INFO  : 'ps7_post_config' command is executed.
+10:08:07 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:08:08 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:08:08 INFO  : 'configparams force-mem-access 0' command is executed.
+10:08:08 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:08:08 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:08:08 INFO  : 'con' command is executed.
+10:08:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:08:08 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+10:21:25 INFO  : Disconnected from the channel tcfchan#7.
+10:35:20 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+10:48:42 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+10:49:45 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+10:50:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:50:06 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+10:50:06 INFO  : 'jtag frequency' command is executed.
+10:50:06 INFO  : Context for 'APU' is selected.
+10:50:07 INFO  : System reset is completed.
+10:50:10 INFO  : 'after 3000' command is executed.
+10:50:10 INFO  : Context for 'APU' is selected.
+10:50:10 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+10:50:10 INFO  : 'configparams force-mem-access 1' command is executed.
+10:50:10 INFO  : Context for 'APU' is selected.
+10:50:10 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+10:50:10 INFO  : 'ps7_init' command is executed.
+10:50:10 INFO  : 'ps7_post_config' command is executed.
+10:50:10 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:50:10 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:50:10 INFO  : 'configparams force-mem-access 0' command is executed.
+10:50:10 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:50:10 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:50:10 INFO  : 'con' command is executed.
+10:50:10 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+10:50:10 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:06:37 INFO  : Disconnected from the channel tcfchan#9.
+11:06:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:06:37 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:06:37 INFO  : 'jtag frequency' command is executed.
+11:06:37 INFO  : Context for 'APU' is selected.
+11:06:37 INFO  : System reset is completed.
+11:06:40 INFO  : 'after 3000' command is executed.
+11:06:40 INFO  : Context for 'APU' is selected.
+11:06:40 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:06:40 INFO  : 'configparams force-mem-access 1' command is executed.
+11:06:40 INFO  : Context for 'APU' is selected.
+11:06:40 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:06:41 INFO  : 'ps7_init' command is executed.
+11:06:41 INFO  : 'ps7_post_config' command is executed.
+11:06:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:06:41 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:06:41 INFO  : 'configparams force-mem-access 0' command is executed.
+11:06:41 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:06:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:06:41 INFO  : 'con' command is executed.
+11:06:41 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:06:41 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:07:15 INFO  : Disconnected from the channel tcfchan#10.
+11:07:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:07:15 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:07:15 INFO  : 'jtag frequency' command is executed.
+11:07:15 INFO  : Context for 'APU' is selected.
+11:07:15 INFO  : System reset is completed.
+11:07:18 INFO  : 'after 3000' command is executed.
+11:07:18 INFO  : Context for 'APU' is selected.
+11:07:18 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:07:18 INFO  : 'configparams force-mem-access 1' command is executed.
+11:07:18 INFO  : Context for 'APU' is selected.
+11:07:18 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:07:18 INFO  : 'ps7_init' command is executed.
+11:07:18 INFO  : 'ps7_post_config' command is executed.
+11:07:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:07:19 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:07:19 INFO  : 'configparams force-mem-access 0' command is executed.
+11:07:19 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:07:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:07:19 INFO  : 'con' command is executed.
+11:07:19 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:07:19 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:18:53 INFO  : Disconnected from the channel tcfchan#11.
+11:18:53 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:18:53 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:18:53 INFO  : 'jtag frequency' command is executed.
+11:18:53 INFO  : Context for 'APU' is selected.
+11:18:53 INFO  : System reset is completed.
+11:18:56 INFO  : 'after 3000' command is executed.
+11:18:56 INFO  : Context for 'APU' is selected.
+11:18:56 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:18:56 INFO  : 'configparams force-mem-access 1' command is executed.
+11:18:56 INFO  : Context for 'APU' is selected.
+11:18:56 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:18:57 INFO  : 'ps7_init' command is executed.
+11:18:57 INFO  : 'ps7_post_config' command is executed.
+11:18:57 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:18:57 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:18:57 INFO  : 'configparams force-mem-access 0' command is executed.
+11:18:57 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:18:57 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:18:57 INFO  : 'con' command is executed.
+11:18:57 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:18:57 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:19:25 INFO  : Disconnected from the channel tcfchan#12.
+11:19:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:19:25 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:19:25 INFO  : 'jtag frequency' command is executed.
+11:19:25 INFO  : Context for 'APU' is selected.
+11:19:26 INFO  : System reset is completed.
+11:19:29 INFO  : 'after 3000' command is executed.
+11:19:29 INFO  : Context for 'APU' is selected.
+11:19:29 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:19:29 INFO  : 'configparams force-mem-access 1' command is executed.
+11:19:29 INFO  : Context for 'APU' is selected.
+11:19:29 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:19:29 INFO  : 'ps7_init' command is executed.
+11:19:29 INFO  : 'ps7_post_config' command is executed.
+11:19:29 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:19:29 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:19:29 INFO  : 'configparams force-mem-access 0' command is executed.
+11:19:29 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:19:29 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:19:29 INFO  : 'con' command is executed.
+11:19:29 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:19:29 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:19:39 INFO  : Disconnected from the channel tcfchan#13.
+11:19:56 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:19:56 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:19:56 INFO  : 'jtag frequency' command is executed.
+11:19:56 INFO  : Context for 'APU' is selected.
+11:19:56 INFO  : System reset is completed.
+11:19:59 INFO  : 'after 3000' command is executed.
+11:19:59 INFO  : Context for 'APU' is selected.
+11:19:59 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:19:59 INFO  : 'configparams force-mem-access 1' command is executed.
+11:19:59 INFO  : Context for 'APU' is selected.
+11:19:59 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:20:00 INFO  : 'ps7_init' command is executed.
+11:20:00 INFO  : 'ps7_post_config' command is executed.
+11:20:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:20:00 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:20:00 INFO  : 'configparams force-mem-access 0' command is executed.
+11:20:00 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:20:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:20:00 INFO  : 'con' command is executed.
+11:20:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:20:00 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:33:00 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+11:34:28 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+11:34:44 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+11:38:23 INFO  : Disconnected from the channel tcfchan#14.
+11:42:43 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\temp_xsdb_launch_script.tcl
+11:42:45 INFO  : XSCT server has started successfully.
+11:42:45 INFO  : Successfully done setting XSCT server connection channel  
+11:42:45 INFO  : plnx-install-location is set to ''
+11:42:45 INFO  : Successfully done setting workspace for the tool. 
+11:42:49 INFO  : Platform repository initialization has completed.
+11:42:49 INFO  : Registering command handlers for Vitis TCF services
+11:42:51 INFO  : Successfully done query RDI_DATADIR 
+11:48:09 INFO  : Result from executing command 'getProjects': design_1_wrapper
+11:48:09 INFO  : Result from executing command 'getPlatforms': design_1_wrapper|C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm
+11:48:10 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+11:48:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:48:37 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:48:37 INFO  : 'jtag frequency' command is executed.
+11:48:37 INFO  : Context for 'APU' is selected.
+11:48:37 INFO  : System reset is completed.
+11:48:40 INFO  : 'after 3000' command is executed.
+11:48:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:48:40 INFO  : Context for 'APU' is selected.
+11:48:40 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:48:40 INFO  : 'configparams force-mem-access 1' command is executed.
+11:48:40 INFO  : Context for 'APU' is selected.
+11:48:40 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:48:41 INFO  : 'ps7_init' command is executed.
+11:48:44 INFO  : 'ps7_post_config' command is executed.
+11:48:44 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:48:44 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:48:47 INFO  : 'configparams force-mem-access 0' command is executed.
+11:48:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:48:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:48:50 INFO  : 'con' command is executed.
+11:48:50 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:48:50 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:48:59 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:48:59 INFO  : 'jtag frequency' command is executed.
+11:48:59 INFO  : Context for 'APU' is selected.
+11:48:59 INFO  : System reset is completed.
+11:49:02 INFO  : 'after 3000' command is executed.
+11:49:02 INFO  : Context for 'APU' is selected.
+11:49:02 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:49:02 INFO  : 'configparams force-mem-access 1' command is executed.
+11:49:02 INFO  : Context for 'APU' is selected.
+11:49:02 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:49:03 INFO  : 'ps7_init' command is executed.
+11:49:03 INFO  : 'ps7_post_config' command is executed.
+11:49:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:49:03 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:49:03 INFO  : 'configparams force-mem-access 0' command is executed.
+11:49:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:49:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:49:03 INFO  : 'con' command is executed.
+11:49:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:49:03 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:49:19 INFO  : Disconnected from the channel tcfchan#3.
+11:49:53 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:50:12 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:50:12 INFO  : 'jtag frequency' command is executed.
+11:50:12 INFO  : Context for 'APU' is selected.
+11:50:12 INFO  : System reset is completed.
+11:50:15 INFO  : 'after 3000' command is executed.
+11:50:15 INFO  : Context for 'APU' is selected.
+11:50:17 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:50:17 INFO  : 'configparams force-mem-access 1' command is executed.
+11:50:17 INFO  : Context for 'APU' is selected.
+11:50:17 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:50:17 INFO  : 'ps7_init' command is executed.
+11:50:17 INFO  : 'ps7_post_config' command is executed.
+11:50:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:50:17 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:50:17 INFO  : 'configparams force-mem-access 0' command is executed.
+11:50:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:50:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:50:17 INFO  : 'con' command is executed.
+11:50:17 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:50:17 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:50:47 INFO  : Disconnected from the channel tcfchan#4.
+11:50:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:51:05 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:51:05 INFO  : 'jtag frequency' command is executed.
+11:51:05 INFO  : Context for 'APU' is selected.
+11:51:05 INFO  : System reset is completed.
+11:51:08 INFO  : 'after 3000' command is executed.
+11:51:08 INFO  : Context for 'APU' is selected.
+11:51:08 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:51:08 INFO  : 'configparams force-mem-access 1' command is executed.
+11:51:08 INFO  : Context for 'APU' is selected.
+11:51:08 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:51:09 INFO  : 'ps7_init' command is executed.
+11:51:09 INFO  : 'ps7_post_config' command is executed.
+11:51:09 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:51:09 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:51:09 INFO  : 'configparams force-mem-access 0' command is executed.
+11:51:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:51:09 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:51:09 INFO  : 'con' command is executed.
+11:51:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:51:09 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:51:32 INFO  : Disconnected from the channel tcfchan#5.
+11:51:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:51:50 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:51:50 INFO  : 'jtag frequency' command is executed.
+11:51:50 INFO  : Context for 'APU' is selected.
+11:51:50 INFO  : System reset is completed.
+11:51:53 INFO  : 'after 3000' command is executed.
+11:51:53 INFO  : Context for 'APU' is selected.
+11:51:53 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:51:53 INFO  : 'configparams force-mem-access 1' command is executed.
+11:51:53 INFO  : Context for 'APU' is selected.
+11:51:53 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:51:54 INFO  : 'ps7_init' command is executed.
+11:51:54 INFO  : 'ps7_post_config' command is executed.
+11:51:54 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:51:54 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:51:54 INFO  : 'configparams force-mem-access 0' command is executed.
+11:51:54 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:51:54 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:51:54 INFO  : 'con' command is executed.
+11:51:54 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:51:54 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:52:05 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+11:52:20 INFO  : Disconnected from the channel tcfchan#6.
+11:52:20 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:52:38 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:52:38 INFO  : 'jtag frequency' command is executed.
+11:52:38 INFO  : Context for 'APU' is selected.
+11:52:39 INFO  : System reset is completed.
+11:52:42 INFO  : 'after 3000' command is executed.
+11:52:42 INFO  : Context for 'APU' is selected.
+11:52:42 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:52:42 INFO  : 'configparams force-mem-access 1' command is executed.
+11:52:42 INFO  : Context for 'APU' is selected.
+11:52:42 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:52:42 INFO  : 'ps7_init' command is executed.
+11:52:42 INFO  : 'ps7_post_config' command is executed.
+11:52:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:52:42 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:52:42 INFO  : 'configparams force-mem-access 0' command is executed.
+11:52:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:52:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:52:42 INFO  : 'con' command is executed.
+11:52:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:52:42 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:54:49 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+11:55:41 INFO  : Disconnected from the channel tcfchan#8.
+11:55:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:56:00 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:56:00 INFO  : 'jtag frequency' command is executed.
+11:56:00 INFO  : Context for 'APU' is selected.
+11:56:00 INFO  : System reset is completed.
+11:56:03 INFO  : 'after 3000' command is executed.
+11:56:03 INFO  : Context for 'APU' is selected.
+11:56:03 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:56:03 INFO  : 'configparams force-mem-access 1' command is executed.
+11:56:03 INFO  : Context for 'APU' is selected.
+11:56:03 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:56:03 INFO  : 'ps7_init' command is executed.
+11:56:03 INFO  : 'ps7_post_config' command is executed.
+11:56:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:56:04 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:56:04 INFO  : 'configparams force-mem-access 0' command is executed.
+11:56:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:56:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:56:04 INFO  : 'con' command is executed.
+11:56:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:56:04 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+11:57:06 INFO  : Disconnected from the channel tcfchan#10.
+11:57:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:57:25 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+11:57:25 INFO  : 'jtag frequency' command is executed.
+11:57:25 INFO  : Context for 'APU' is selected.
+11:57:25 INFO  : System reset is completed.
+11:57:28 INFO  : 'after 3000' command is executed.
+11:57:28 INFO  : Context for 'APU' is selected.
+11:57:28 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+11:57:28 INFO  : 'configparams force-mem-access 1' command is executed.
+11:57:28 INFO  : Context for 'APU' is selected.
+11:57:28 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+11:57:28 INFO  : 'ps7_init' command is executed.
+11:57:28 INFO  : 'ps7_post_config' command is executed.
+11:57:28 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:57:29 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:57:29 INFO  : 'configparams force-mem-access 0' command is executed.
+11:57:29 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:57:29 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:57:29 INFO  : 'con' command is executed.
+11:57:29 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:57:29 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+12:00:01 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+12:05:04 INFO  : Checking for BSP changes to sync application flags for project 'STEAM_V2'...
+12:05:38 INFO  : Disconnected from the channel tcfchan#11.
+12:05:38 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:05:56 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+12:05:56 INFO  : 'jtag frequency' command is executed.
+12:05:56 INFO  : Context for 'APU' is selected.
+12:05:56 INFO  : System reset is completed.
+12:05:59 INFO  : 'after 3000' command is executed.
+12:05:59 INFO  : Context for 'APU' is selected.
+12:05:59 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+12:05:59 INFO  : 'configparams force-mem-access 1' command is executed.
+12:05:59 INFO  : Context for 'APU' is selected.
+12:05:59 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+12:06:00 INFO  : 'ps7_init' command is executed.
+12:06:00 INFO  : 'ps7_post_config' command is executed.
+12:06:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:06:00 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:06:00 INFO  : 'configparams force-mem-access 0' command is executed.
+12:06:00 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:06:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:06:00 INFO  : 'con' command is executed.
+12:06:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:06:00 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+12:07:08 INFO  : Disconnected from the channel tcfchan#14.
+12:07:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:07:26 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+12:07:26 INFO  : 'jtag frequency' command is executed.
+12:07:27 INFO  : Context for 'APU' is selected.
+12:07:27 INFO  : System reset is completed.
+12:07:30 INFO  : 'after 3000' command is executed.
+12:07:30 INFO  : Context for 'APU' is selected.
+12:07:30 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+12:07:30 INFO  : 'configparams force-mem-access 1' command is executed.
+12:07:30 INFO  : Context for 'APU' is selected.
+12:07:30 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+12:07:30 INFO  : 'ps7_init' command is executed.
+12:07:30 INFO  : 'ps7_post_config' command is executed.
+12:07:30 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:07:30 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:07:30 INFO  : 'configparams force-mem-access 0' command is executed.
+12:07:30 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:07:30 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:07:30 INFO  : 'con' command is executed.
+12:07:30 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:07:30 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+12:09:19 INFO  : Disconnected from the channel tcfchan#15.
+12:09:19 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:09:37 INFO  : Jtag cable 'Digilent Zybo Z7 210351AD6590A' is selected.
+12:09:37 INFO  : 'jtag frequency' command is executed.
+12:09:37 INFO  : Context for 'APU' is selected.
+12:09:38 INFO  : System reset is completed.
+12:09:41 INFO  : 'after 3000' command is executed.
+12:09:41 INFO  : Context for 'APU' is selected.
+12:09:41 INFO  : Hardware design and registers information is loaded from 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa'.
+12:09:41 INFO  : 'configparams force-mem-access 1' command is executed.
+12:09:41 INFO  : Context for 'APU' is selected.
+12:09:41 INFO  : Sourcing of 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl' is done.
+12:09:41 INFO  : 'ps7_init' command is executed.
+12:09:41 INFO  : 'ps7_post_config' command is executed.
+12:09:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:09:41 INFO  : The application 'C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:09:41 INFO  : 'configparams force-mem-access 0' command is executed.
+12:09:41 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:09:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:09:41 INFO  : 'con' command is executed.
+12:09:41 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+12:09:41 INFO  : Launch script is exported to file 'C:\Users\SpaceGrant\Documents\STEAM\Avionics\vivado1\STEAM_V2\.sdk\launch_scripts\single_application_debug\systemdebugger_steam_v2_system_standalone.tcl'
+12:18:34 INFO  : Disconnected from the channel tcfchan#16.
