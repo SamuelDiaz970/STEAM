@@ -1,0 +1,10 @@
+2020-12-22T17:10:36.993489700255-17:10:36 **** Incremental Build of configuration Debug for project STEAM ****
+000-make all 
+000-make --no-print-directory pre-build
+000-a9-linaro-pre-build-step
+000-' '
+000-make --no-print-directory main-build
+000-make[1]: Nothing to be done for 'main-build'.
+00255-
+17:10:37 Build Finished (took 201ms)
+
