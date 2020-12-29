@@ -46,3 +46,6 @@ timestamp=[2020-12-28 12:00:02], mode=BUILD, duration=0:00:00.573, duration_ms=5
 timestamp=[2020-12-28 12:00:05], mode=BUILD, duration=0:00:03.461, duration_ms=3461, data={name=STEAM_V2_system, configuration=Debug, clean_build=false}
 timestamp=[2020-12-28 12:05:04], mode=BUILD, duration=0:00:00.212, duration_ms=212, data={name=STEAM_V2, configuration=Debug, clean_build=false}
 timestamp=[2020-12-28 12:05:08], mode=BUILD, duration=0:00:03.498, duration_ms=3498, data={name=STEAM_V2_system, configuration=Debug, clean_build=false}
+timestamp=[2020-12-28 22:58:15], mode=WORKBENCH_START, duration=0:00:09.622, duration_ms=9622, data={}
+timestamp=[2020-12-28 22:58:16], mode=WORKBENCH_UI_INIT, duration=0:00:00.430, duration_ms=430, data={editors_count=8, platform_editors_count=6, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=RemoteSystemsTempFiles,STEAM_V2,STEAM_V2_system,design_1_wrapper}
+timestamp=[2020-12-28 22:58:16], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.084, duration_ms=84, data={}
