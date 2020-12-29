@@ -52,6 +52,9 @@
 #include "xparameters.h"
 #include "xuartps.h"
 
+#include "xadcps.h"
+#include "xstatus.h"
+
 /************************** Constant Definitions *****************************/
 /*
  * The following constants map to the XPAR parameters created in the
@@ -59,15 +62,23 @@
  * change all the needed parameters in one place.
  */
 #define UART_DEVICE_ID                  XPAR_XUARTPS_1_DEVICE_ID
+#define XADC_DEVICE_ID 					XPAR_XADCPS_0_DEVICE_ID
 
+/***************** Macros (Inline Functions) Definitions ********************/
+
+#define printf xil_printf /* Small foot-print printf function */
 
 /************************** Function Prototypes ******************************/
 
 int UartPsHelloWorldExample(u16 DeviceId);
 
+static int XAdcPolledPrintfExample(u16 XAdcDeviceId);
+static int XAdcFractionToInt(float FloatNum);
+
 /************************** Variable Definitions *****************************/
 
 XUartPs Uart_Ps;		/* The instance of the UART Driver */
+static XAdcPs XAdcInst;      /* XADC driver instance */
 
 
 int main()
@@ -75,6 +86,10 @@ int main()
 
 	int Status;
 	int Status1;
+	int Status_ADC;
+
+	////////////////////////////////////////////////////////////////
+	// UART
 
 	/*
 	 * Run the Hello World example , specify the the Device ID that is
@@ -89,6 +104,20 @@ int main()
 	}
 
 	xil_printf("Successfully ran Uartps hello world Example\r\n");
+
+	////////////////////////////////////////////////////////////////
+	// ADC
+
+	/*
+	 * Run the polled example, specify the Device ID that is
+	 * generated in xparameters.h.
+	 */
+	Status_ADC = XAdcPolledPrintfExample(XADC_DEVICE_ID);
+	if (Status_ADC != XST_SUCCESS) {
+		xil_printf("adcps polled printf Example Failed\r\n");
+		return XST_FAILURE;
+	}
+	xil_printf("Successfully ran adcps polled printf Example\r\n");
 
 	return Status;
 }
@@ -123,4 +152,64 @@ int UartPsHelloWorldExample(u16 DeviceId)
 	}
 
 	return SentCount;
+}
+
+int XAdcPolledPrintfExample(u16 XAdcDeviceId)
+{
+	int Status;
+	XAdcPs_Config *ConfigPtr;
+	u32 TempRawData;
+	float TempData;
+	XAdcPs *XAdcInstPtr = &XAdcInst;
+
+	printf("\r\nEntering the XAdc Polled Example. \r\n");
+
+	/*
+	 * Initialize the XAdc driver.
+	 */
+	ConfigPtr = XAdcPs_LookupConfig(XAdcDeviceId);
+	if (ConfigPtr == NULL) {
+		return XST_FAILURE;
+	}
+	XAdcPs_CfgInitialize(XAdcInstPtr, ConfigPtr,
+				ConfigPtr->BaseAddress);
+
+	/*
+	 * Self Test the XADC/ADC device
+	 */
+	Status = XAdcPs_SelfTest(XAdcInstPtr);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	/*
+	 * Disable the Channel Sequencer before configuring the Sequence
+	 * registers.
+	 */
+	XAdcPs_SetSequencerMode(XAdcInstPtr, XADCPS_SEQ_MODE_SAFE);
+	/*
+	 * Read the on-chip Temperature Data (Current/Maximum/Minimum)
+	 * from the ADC data registers.
+	 */
+	TempRawData = XAdcPs_GetAdcData(XAdcInstPtr, XADCPS_CH_TEMP);
+	TempData = XAdcPs_RawToTemperature(TempRawData);
+	printf("\r\nThe Current Temperature is %0d.%03d Centigrades.\r\n",
+				(int)(TempData), XAdcFractionToInt(TempData));
+
+
+	printf("Exiting the XAdc Polled Example. \r\n");
+
+	return XST_SUCCESS;
+}
+
+int XAdcFractionToInt(float FloatNum)
+{
+	float Temp;
+
+	Temp = FloatNum;
+	if (FloatNum < 0) {
+		Temp = -(FloatNum);
+	}
+
+	return( ((int)((Temp -(float)((int)Temp)) * (1000.0f))));
 }

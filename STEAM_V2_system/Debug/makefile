@@ -34,7 +34,7 @@ all: package
 
 package:
 	-@echo Generating bif file for the system project
-	generate_system_bif.bat 58602 ${XPFM_PATH} ${DOMAINS} ${BIF_PATH}
+	generate_system_bif.bat 51912 ${XPFM_PATH} ${DOMAINS} ${BIF_PATH}
 	${SDCARD_GEN} --xpfm ${XPFM_PATH} --sys_config ${SYS_CONFIG} --bif ${BIF_PATH} --no_bitstream ${SD_FILES}
 
 clean:
