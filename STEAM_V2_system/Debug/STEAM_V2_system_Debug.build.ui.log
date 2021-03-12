@@ -1,9 +1,0 @@
-2020-12-28T23:42:40.106782300255-23:42:40 **** Build of configuration Debug for project STEAM_V2_system ****
-000-make all 
-000-Generating bif file for the system project
-000-generate_system_bif.bat 51912 C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm domain_ps7_cortexa9_0 C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2_system/Debug/system.bif
-000-sdcard_gen --xpfm C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/design_1_wrapper/export/design_1_wrapper/design_1_wrapper.xpfm --sys_config design_1_wrapper --bif C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2_system/Debug/system.bif --no_bitstream --elf C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2/Debug/STEAM_V2.elf,ps7_cortexa9_0
-000-Running C:/Xilinx/Vitis/2020.1/bin/bootgen  -image C:/Users/SpaceGrant/Documents/STEAM/Avionics/vivado1/STEAM_V2/STEAM_V2_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
-00255-
-23:42:43 Build Finished (took 3s.600ms)
-
