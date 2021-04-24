@@ -1,7 +1,7 @@
-const long baud = 50;
+const long baud = 9600;
 
-const short invalidPin = 1; // read invalid signal
-const short invalidOut = 2; // connect LED here
+const short invalidPin = 2; // read invalid signal
+const short invalidOut = 3; // connect LED here
 int valid;
 
 int i = 0;
@@ -19,14 +19,13 @@ void setup() {
 
 void loop() {
   // Start with valid data, then (after 20 bytes) switch to invalid
-  // Then after another 40 bytes, switch to valid data
-  if(i < 20 || i > 60) {
-    data = rand()*256;
+  // Then after another 20 bytes, switch to valid data
+  if(i < 20 || i > 40) {
+    data = rand()%256;
   } else {
     data = 0;
   }
   Serial.print("Data sent to RS-232: "); Serial.println(data); // print data to console
-  Serial.println();
   Serial.write(data); // send byte to receiver
 
   valid = digitalRead(invalidPin);
@@ -36,6 +35,10 @@ void loop() {
     Serial.println("Invalid");
   // check transmitted data on AD2
 
+  Serial.println();
+
   delay(500); // delay 0.5 second before next iteration (time amount can be changed)
   i++;
+
+  if(i >= 60) i=0; // reset after 60 cycles
 }
