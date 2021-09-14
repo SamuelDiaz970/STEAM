@@ -1,37 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@SamuelDiaz970 
-Xilinx
-/
-embeddedsw
-Public
-104
-467
-753
-Code
-Issues
-84
-Pull requests
-56
-Actions
-Projects
-Security
-Insights
-embeddedsw/XilinxProcessorIPLib/drivers/xadcps/examples/xadcps_polled_printf_example.c
-@kothakondashireesha
-kothakondashireesha xadcps: updating license content to SPDX based licensing
-…
-Latest commit 64a6b70 on Apr 24, 2020
- History
- 3 contributors
-@saddepal@Sundeep-Bhatta@kothakondashireesha
-286 lines (242 sloc)  8.9 KB
-  
 /******************************************************************************
 * Copyright (C) 2011 - 2020 Xilinx, Inc.  All rights reserved.
 * SPDX-License-Identifier: MIT
@@ -318,16 +284,3 @@ int XAdcFractionToInt(float FloatNum)
 
 	return( ((int)((Temp -(float)((int)Temp)) * (1000.0f))));
 }
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
