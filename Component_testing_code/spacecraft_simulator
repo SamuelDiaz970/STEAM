@@ -1,0 +1,30 @@
+void setup() {
+  Serial.begin(9600);
+  while(!Serial){
+    ;
+  }
+}
+
+
+int stopthat = 5;
+void loop() {
+  stopthat --;
+  Serial.println(stopthat);
+  Serial.println("Sending message:"); 
+  Serial.write(26); //send request for parameter dump 
+
+  /*while(Serial.available() == 0){    
+    Serial.print("Waiting for response...");
+  }*/
+  Serial.println("Receiving response:");
+  if(Serial.available() > 0){
+    char responseNeg = Serial.read();
+    Serial.println(responseNeg);
+  }
+  Serial.println();
+  Serial.println();
+  if(stopthat == 0){
+    exit(0);
+  }
+  delay(3000); //wait for 3s  
+}
