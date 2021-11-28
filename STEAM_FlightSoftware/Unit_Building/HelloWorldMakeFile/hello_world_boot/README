@@ -1,0 +1,32 @@
+Do
+cd Desktop/STEAM/STEAM_FlightSoftware/Unit_Building/HelloWorldMakeFile/hello_world_boot
+source /opt/xiphos/sdk/ark/environment-setup-cortexa9hf-neon-xiphos-linux-gnueabi
+
+scp helloworld root@128.138.75.86:/tmp
+scp helloworld.service root@128.138.75.86:/tmp
+
+After Moved to temp file ssh in to board
+ssh root@q7-revb-8022
+Then cd into tmp file
+
+Run program
+./helloworld
+
+Run this to find correct write protect commands
+xsc_boot_copy
+
+writeprotect 0 0 0
+mv /tmp/helloworld /usr/bin/
+writeprotect 0 0 1
+
+
+writeprotect 0 0 0
+mv /tmp/helloworld.service /lib/systemd/system/
+systemctl daemon-reload
+systemctl enable helloworld.service
+writeprotect 0 0 1
+
+
+In tmp there is log1.log and if you:
+cat log1.log
+You should get output of "Hello World"
