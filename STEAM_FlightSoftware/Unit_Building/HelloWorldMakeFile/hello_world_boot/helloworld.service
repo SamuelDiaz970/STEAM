@@ -1,0 +1,13 @@
+[Unit]
+Description=Hello World Startup
+
+[Service]
+User=root
+ExecStart=/usr/bin/helloworld
+StandardOutput=file:/tmp/log1.log
+StandardError=file:/tmp/log2.log
+Restart=on-faliure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
