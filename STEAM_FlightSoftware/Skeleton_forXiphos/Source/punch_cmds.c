@@ -170,7 +170,7 @@ command_handle(punch_commands command){
 
 
 /***************************************************************************//**
- * @brief
+ * @brief NOOP Command From Spacecraft
  *   
  *
  * @details
@@ -188,7 +188,7 @@ NOOP(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief reset counters Command From Spacecraft
  *   
  *
  * @details
@@ -206,7 +206,7 @@ reset_counters(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set steam time Command From Spacecraft
  *   
  *
  * @details
@@ -224,7 +224,7 @@ set_STEAM_Time(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief copy parameter set Command From Spacecraft
  *   
  *
  * @details
@@ -242,7 +242,7 @@ Copy_Parameter_Set(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief dump parameter Command From Spacecraft
  *   
  *
  * @details
@@ -260,7 +260,7 @@ Dump_Parameter_Set(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set full power mode Command From Spacecraft
  *   
  *
  * @details
@@ -278,7 +278,7 @@ Set_Full_Power_Mode(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set reduced power mode Command From Spacecraft
  *   
  *
  * @details
@@ -296,7 +296,7 @@ Set_Reduced_Power_Mode(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set safe mode Command From Spacecraft
  *   
  *
  * @details
@@ -314,7 +314,7 @@ Set_Safe_Mode(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set mode trigger persistence Command From Spacecraft
  *   
  *
  * @details
@@ -332,7 +332,7 @@ Set_Mode_Trigger_Persistence(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set max tries full power to safe Command From Spacecraft
  *   
  *
  * @details
@@ -350,7 +350,7 @@ Set_Max_Tries_Full_Power2Safe(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set command echo packet enable Command From Spacecraft
  *   
  *
  * @details
@@ -368,7 +368,7 @@ Set_CMD_Echo_Packet_Enable(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief issue real time house keeping packets Command From Spacecraft
  *   
  *
  * @details
@@ -386,7 +386,7 @@ Issue_RealTime_HK_Packet(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set housekeeping packet rate Command From Spacecraft
  *   
  *
  * @details
@@ -404,7 +404,7 @@ Set_HK_Packet_Rate(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set science packet rate Command From Spacecraft
  *   
  *
  * @details
@@ -422,7 +422,7 @@ Set_SCI_Packet_Rate(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set the log packet route Command From Spacecraft
  *   
  *
  * @details
@@ -440,7 +440,7 @@ Route_LOG_Packet(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set transmit timeout Command From Spacecraft
  *   
  *
  * @details
@@ -458,7 +458,7 @@ Set_Contact_Tx_Timeout(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief switch power x123 Command From Spacecraft
  *   
  *
  * @details
@@ -476,7 +476,7 @@ Switch_Power_X123(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set the i2c timeout time Command From Spacecraft
  *   
  *
  * @details
@@ -494,7 +494,7 @@ Set_I2C_Timeout(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief write to NOR flash Command From Spacecraft
  *   
  *
  * @details
@@ -512,7 +512,7 @@ Write_to_NOR_Flash(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief read from NOR flash Command From Spacecraft
  *   
  *
  * @details
@@ -530,7 +530,7 @@ Read_from_NOR_Flash(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief send a x123 command Command From Spacecraft
  *   
  *
  * @details
@@ -548,7 +548,7 @@ Send_X123_Command(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief query x123 status Command From Spacecraft
  *   
  *
  * @details
@@ -566,7 +566,7 @@ Query_X123_Status(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief enable the dual command, Command From Spacecraft
  *   
  *
  * @details
@@ -584,7 +584,7 @@ Enable_Dual_Command(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief autoset the x123 input offset Command From Spacecraft
  *   
  *
  * @details
@@ -602,7 +602,7 @@ Autoset_X123_Input_Offset(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief autoset x123 fast threshold Command From Spacecraft
  *   
  *
  * @details
@@ -620,7 +620,7 @@ Autoset_X123_Fast_Threshold(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief x123 request spectrum plus status Command From Spacecraft
  *   
  *
  * @details
@@ -638,7 +638,7 @@ X123_Request_Spectrum_plus_Status(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief x123 request diagnostic data Command From Spacecraft
  *   
  *
  * @details
@@ -656,7 +656,7 @@ X123_Request_Diagnostic_Data(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief trigger watchdog reset Command From Spacecraft
  *   
  *
  * @details
@@ -674,7 +674,7 @@ Trigger_Watchdog_Reset(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set last cmd watchdog timeout Command From Spacecraft
  *   
  *
  * @details
@@ -692,7 +692,7 @@ Set_Last_CMD_Watchdog_Timeout(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief set detector power delay Command From Spacecraft
  *   
  *
  * @details
@@ -710,7 +710,7 @@ Set_detector_power_delay(){
 }
 
 /***************************************************************************//**
- * @brief
+ * @brief Power cycle STEAM Command From Spacecraft
  *   
  *
  * @details

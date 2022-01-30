@@ -1,5 +1,20 @@
 #include "app.h"
 
+/***************************************************************************//**
+ * @brief Application Peripherals Setup
+ *   
+ *
+ * @details
+ * 	 This function runs all the open and configure commands
+ *   This will run in the beginning of main
+ *
+ * @note
+ *	 
+ * @param[in] variable_name
+ *  
+ *
+ ******************************************************************************/
+
 void app_peripheral_setup(){
     gpio_open();
     i2c_open();
@@ -14,17 +29,31 @@ void app_peripheral_setup(){
     enable_interrupts();
 }
 
+/***************************************************************************//**
+ * @brief Initialize the Timer
+ *   
+ *
+ * @details
+ * 	 Initialize the timer for any time functionality. 
+ *   These values are subject to change based off of commands from the spacecraft
+ *
+ * @note
+ *	 
+ * @param[in] variable_name
+ *  
+ *
+ ******************************************************************************/
 void timer_open(){
     //initialize a 1,3, and 10s timer
 }
 
 
 /***************************************************************************//**
- * @brief
- *   
+ * @brief 
+ *   Sends the payload echo packet
  *
  * @details
- * 	 
+ * 	 This will configure data to be sent and then send the data
  *
  * @note
  *	 
@@ -38,10 +67,10 @@ payload_echo_send(){
 }
 /***************************************************************************//**
  * @brief
- *   
+ *   Sends the payload housekeeping packet
  *
  * @details
- * 	 
+ * 	 This will configure data to be sent and then send the data
  *
  * @note
  *	 
@@ -54,10 +83,10 @@ payload_HK_send(){
 }
 /***************************************************************************//**
  * @brief
- *   
+ *   Sends the payload parameter dump packet
  *
  * @details
- * 	 
+ * 	 This will configure data to be sent and then send the data
  *
  * @note
  *	 
@@ -70,10 +99,10 @@ payload_parameter_dump_send(){
 }
 /***************************************************************************//**
  * @brief
- *   
+ *   Sends the payload log packet
  *
  * @details
- * 	 
+ * 	 This will configure data to be sent and then send the data
  *
  * @note
  *	 
@@ -86,10 +115,10 @@ payload_log_msg_send(){
 }
 /***************************************************************************//**
  * @brief
- *   
+ *   Sends the payload science packet
  *
  * @details
- * 	 
+ * 	 This will configure data to be sent and then send the data
  *
  * @note
  *	 

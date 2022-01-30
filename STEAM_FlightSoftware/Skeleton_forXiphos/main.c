@@ -11,10 +11,10 @@
  *************************/
 /***************************************************************************//**
  * @brief
- *   
+ *   This is a timer IRQ that interrupts ever ___ (time increment)
  *
  * @details
- * 	 Measurments(10 second Interrupt)
+ * 	 times are subject to change by commands from spacecraft
  *
  * @note
  *	 
