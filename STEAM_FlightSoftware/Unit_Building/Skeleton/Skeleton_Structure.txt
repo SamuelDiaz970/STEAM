@@ -1,0 +1,54 @@
+Skeleton structure
+
+Main // Hosts main event handler(Currently Superloop)
+	RS422 //Comunicate with PUNCH (Uses 2 UART lines)
+		-
+	HMS //Housekeeping Monitoring System
+		-uart
+		-XADC
+			-i2c //ADC and I2C used to communicate with the Thermistor
+		-power //Upon HMS failiue code switch power modes
+			- 
+			-
+			-
+		-HXR //Hard X-Ray Spectrometer //Uses 1 UART line
+			-UART/RS232 //RS232 used to communicate with spectrometers
+			-
+			-
+		-SXR //Soft X-Ray Spectrometer //Uses 1 UART line
+			-UART/RS232 //RS232 used to communicate with spectrometers
+			-
+			-
+	spectrometer_handler // Handle commands and data from spectrometers
+		-HXR //Hard X-Ray Spectrometer //Uses 1 UART line
+			-UART/RS232 //RS232 used to communicate with spectrometers
+			-
+			-
+		-SXR //Soft X-Ray Spectrometer //Uses 1 UART line
+			-UART/RS232 //RS232 used to communicate with spectrometers
+			-
+			-
+	GPIO //Likely used most places(Placement and connections yet to be determined)
+
+
+Communcation Protocols
+# needed	Protocol	Usage
+2			I2C			ADC to Thermistor
+5			UART		2 for RS422, 2 for Spectrometer(Built Through Programmable Logic),1 for USB
+
+
+Location of xparameters.h
+C:\Users\USER\Documents\SPACEGRANT\EXTRA\embeddedsw-master\XilinxProcessorIPLib\drivers\common\src
+
+
+TODO
+
+Watchdog timer/ setup interrupt clock and test
+	https://github.com/Xilinx/embeddedsw/blob/master/XilinxProcessorIPLib/drivers/wdttb/examples/xwdttb_intr_example.c
+	GOAL set up a 1 second interrupt in order to have a loop to do the Science(3 seconds) and HouseKeeping(10seconds)
+
+Test I2c busses with arduino
+
+
+
+
