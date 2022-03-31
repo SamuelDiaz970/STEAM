@@ -19,9 +19,4 @@ source /opt/xiphos/sdk/ark/environment-setup-cortexa9hf-neon-xiphos-linux-gnueab
 ```
 ./waf
 ```
-
-<<<<<<< HEAD
 The binary will be in the build directory: `build/steam_fs`. You can transfer it to the q-card using `scp build/steam_fs root@q7-revb-8022:/tmp`
-=======
-The binary will be in the build directory: `build/steam_fs`. You can transfer it to the q-card using `scp build/steam_demo root@q7-revb-8030:/tmp`
->>>>>>> 94a07ff8a1fb195d4b7892ca1c0e5702bcca51a1
