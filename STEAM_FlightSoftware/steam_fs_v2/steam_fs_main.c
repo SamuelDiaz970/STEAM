@@ -8,11 +8,12 @@
 #include <sys/time.h>
 
 #include "serial.h"
+#include "gpio.h"
 
 
 /* macros */
 #define STEAM_PACKET_SZ 	(256U)
-#define EVERY_3_SEC		(3U)
+#define EVERY_3_SEC		    (3U)
 #define EVERY_10_SEC		(10U)
 #define HXR_ON_AFTER_BOOT	(55U)
 #define LOOP_SLEEP_US		(100000U) /* 10ms delay ( max. 1000ms) */
@@ -78,7 +79,8 @@ int main(void)
 		printf("serial init failed!\n");
 		goto error_main;
 	}
-	//TODO Include the IO initialization 
+	
+	gpio_init();
 
 	/* turn off all the spectrometers at boot-up */
 	xr_detector_turn_off(SOFT_XR);
@@ -120,23 +122,23 @@ int main(void)
 error_main:
 	printf("Application faced an error. Terminating...\n");
 	close_serial_interfaces();
+	gpio_deinit();
 
 }
-
 
 int xr_detector_turn_on(xr_type_t det)
 {
 	switch(det)
 	{
 		case SOFT_XR:
-			//TODO: Perform the GPIO action
+			gpio_config_sxr(true);
 			g_param.sxr_detector_on = true;
 			printf("xr_detector_turn_ON  : SOFT_XR\n");
 
 		break;
 
 		case HARD_XR:
-			//TODO: Perform the GPIO action
+			gpio_config_hxr(true);
 			g_param.hxr_detector_on = true;
 			printf("xr_detector_turn_ON  : HARD_XR\n");
 		break;
@@ -153,12 +155,12 @@ int xr_detector_turn_off(xr_type_t det)
 	switch(det)
 	{
 		case SOFT_XR:
-			//TODO: Perform the GPIO action
+			gpio_config_sxr(false);
 			g_param.sxr_detector_on = false;
 			printf("xr_detector_turn_OFF : SOFT_XR\n");
 		break;
 		case HARD_XR:
-			//TODO: Perform the GPIO action
+			gpio_config_hxr(false);
 			g_param.hxr_detector_on = false;
 			printf("xr_detector_turn_OFF : HARD_XR\n");
 		break;
@@ -182,6 +184,47 @@ bool xr_detector_get_status(xr_type_t det)
 	}
 }
 
+int steam_timestamp_init(void)
+{
+	g_param.time_at_boot = 0;
+	g_param.time_last_hxr = g_param.time_at_boot;
+	g_param.time_last_sxr = g_param.time_at_boot;
+	g_param.time_last_hk  = g_param.time_at_boot;
+}
+
+void steam_send_periodic_messages(void)
+{
+	if(g_param.time_from_boot - g_param.time_last_hk >= EVERY_3_SEC)
+	{
+		g_param.time_last_hk = g_param.time_from_boot;
+		printf("Transmitting the 3 sec message !!\n");
+	}
+
+	if((xr_detector_get_status(HARD_XR) == true) && (g_param.time_from_boot - g_param.time_last_hxr >= EVERY_10_SEC))
+	{
+		printf("Requesting the 10 sec message : HXR !!\n");
+		g_param.time_last_hxr = g_param.time_from_boot;
+	}
+
+	if((xr_detector_get_status(SOFT_XR) == true) && (g_param.time_from_boot - g_param.time_last_sxr >= EVERY_10_SEC))
+	{
+		printf("Requesting the 10 sec message : SXR !!\n");
+		g_param.time_last_sxr = g_param.time_from_boot;
+	}
+}
+
+
+void steam_process_incoming_messages(void)
+{
+	/* process only if there is an incoming message */
+	if(g_param.hz_packet_avail == true)
+	{
+		/* parse and perform actions */
+
+		g_param.hz_packet_avail = false;
+	}
+}
+
 
 /* initialize a one second timer */
 int timer_init(void)
@@ -201,46 +244,5 @@ int timer_init(void)
 void timer_1sec_handle(int sig)
 {
 	g_param.time_from_boot++;
-	printf("handle count is %llu\n",g_param.time_from_boot);
-}
-
-int steam_timestamp_init(void)
-{
-	g_param.time_at_boot = 0;
-	g_param.time_last_hxr = g_param.time_at_boot;
-	g_param.time_last_sxr = g_param.time_at_boot;
-	g_param.time_last_hk  = g_param.time_at_boot;
-}
-
-void steam_send_periodic_messages(void)
-{
-	if(g_param.time_from_boot - g_param.time_last_hk >= EVERY_3_SEC)
-	{
-		g_param.time_last_hk = g_param.time_from_boot;
-		printf("Transmitting the 3 sec message !!\n");
-	}
-
-	if((g_param.hxr_detector_on == true) && (g_param.time_from_boot - g_param.time_last_hxr >= EVERY_10_SEC))
-	{
-		printf("Requesting the 10 sec message : HXR !!\n");
-		g_param.time_last_hxr = g_param.time_from_boot;
-	}
-
-	if((g_param.sxr_detector_on == true) && (g_param.time_from_boot - g_param.time_last_sxr >= EVERY_10_SEC))
-	{
-		printf("Requesting the 10 sec message : SXR !!\n");
-		g_param.time_last_sxr = g_param.time_from_boot;
-	}
-}
-
-
-void steam_process_incoming_messages(void)
-{
-	/* process only if there is an incoming message */
-	if(g_param.hz_packet_avail == true)
-	{
-		/* parse and perform actions */
-
-		g_param.hz_packet_avail = false;
-	}
+	printf("system_time_from_boot %llu sec\n",g_param.time_from_boot);
 }

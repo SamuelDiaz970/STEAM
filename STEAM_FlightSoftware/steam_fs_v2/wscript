@@ -17,13 +17,19 @@ def configure(conf):
         execute = False,
         define_ret = True,
         uselib_store='SENSORS')
+    conf.check_cc(
+        lib='gpiod',
+        define_name = "LIBGPIOD_VERSION",
+        execute = False,
+        define_ret = True,
+        uselib_store='GPIOD')
 
     conf.env.CFLAGS = ['-g']
 
 def build(bld):
     bld.program(
-            source=['steam_fs_main.c', 'rtc.c', 'adc.c', 'serial.c'],
+            source=['steam_fs_main.c', 'rtc.c', 'adc.c', 'serial.c', 'gpio.c'],
             target=APPNAME,
-            use=['SENSORS', 'M']
+            use=['SENSORS', 'GPIOD', 'M']
             )
 
