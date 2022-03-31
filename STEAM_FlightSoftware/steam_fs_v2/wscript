@@ -1,0 +1,29 @@
+APPNAME = 'steam_fs'
+top = '.'
+out = 'build'
+
+def options(opt):
+    opt.load('compiler_c')
+
+def configure(conf):
+    conf.load('compiler_c')
+    conf.check_cc(
+        fragment='''
+            #include <stdio.h>
+            #include <sensors/sensors.h>
+            int main() { printf("%s", libsensors_version); return 0; } ''',
+        lib='sensors',
+        define_name = "LIBSENSORS_VERSION",
+        execute = False,
+        define_ret = True,
+        uselib_store='SENSORS')
+
+    conf.env.CFLAGS = ['-g']
+
+def build(bld):
+    bld.program(
+            source=['steam_fs_main.c', 'rtc.c', 'adc.c', 'serial.c'],
+            target=APPNAME,
+            use=['SENSORS', 'M']
+            )
+
