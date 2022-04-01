@@ -1,4 +1,7 @@
-#define MAX_PACKET_SIZE 1024
+#define MAX_PACKET_SIZE 3144//1024
+#define MAX_PUNCH_PACKET_SIZE 30
+#define MAX_SPEC_PACKET_SIZE 3144//this is the size of the Response Packet 1024-channel spectrum plus Status
+
 
 struct punch_packet {
 	char *buf;
@@ -14,6 +17,7 @@ struct s_packet {
 	char *buf;
 	int size;
 };
+
 
 int setup_serial_interfaces();
 int close_serial_interfaces();

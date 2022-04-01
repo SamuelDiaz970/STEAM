@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <gpiod.h>
+// #include <gpiod.h>
 
 //Data Event FIFO
 struct data_fifo {

@@ -67,7 +67,7 @@ void packet_head(int buff,
     if(buff == 0){
         count = buffer_write_hk(VER | TYPE << 3| SHDR << 4 | APID << 5, count);
         count = buffer_write_hk(APID >> 3, count);
-        count = buffer_write_hk(GRP | SEQ << 2, count);
+		count = buffer_write_hk(GRP | SEQ << 2, count);
         count = buffer_write_hk(SEQ >> 6, count);
         count = buffer_write_hk(LEN, count);
         count = buffer_write_hk(LEN >> 8, count);
@@ -230,17 +230,13 @@ void payload_science_dummy_packet_sr(){
 		printf("Buffer Full");
 		return;
 	}
-	if(packet_tail_location == -1){
-		printf("Buffer Full");
-		return;
-	}
-
+	
     for(int i = 0; i < 3105; i++){
 		packet_tail_location = buffer_write_sr(0,packet_tail_location);
         if(packet_tail_location == -1){
 		printf("Buffer Full");
 		return;
-	}
+		}
 	}
 
     // int uart_array_temp[32] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -277,17 +273,13 @@ void payload_science_dummy_packet_hr(){
 		printf("Buffer Full");
 		return;
 	}
-	if(packet_tail_location == -1){
-		printf("Buffer Full");
-		return;
-	}
-
+	
     for(int i = 0; i < 3105; i++){
 		packet_tail_location = buffer_write_hr(0,packet_tail_location);
         if(packet_tail_location == -1){
 		printf("Buffer Full");
 		return;
-	}
+		}
 	}
 
     // int uart_array_temp[32] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -642,7 +634,7 @@ void payload_HK_dummy_packet(){
 	
 	}	
 
-    checksum_hr();
+    checksum_hk();
     packet_tail_location = packet_tail_location + 2;
     int syncword = 0x1ACFFC1D;
     packet_tail_location = IntToChar(buff, packet_tail_location, syncword);

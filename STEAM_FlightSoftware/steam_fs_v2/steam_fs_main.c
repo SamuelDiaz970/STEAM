@@ -7,10 +7,11 @@
 #include <signal.h>
 #include <sys/time.h>
 
-#include "serial.h"
+// #include "serial.h"
 #include "gpio.h"
 #include "rtc.h"
 #include "packet.h"
+#include "spectrometer.h"
 
 
 /* macros */
@@ -215,7 +216,7 @@ void steam_send_periodic_messages(void)
 		packet.buf = hr_buff;
 		packet.size = hr_buff_length;
 		punch_write(packet);
-		// buffer_print_hr();
+		buffer_print_hr();
 		printf("Requesting the 10 sec message : HXR !!\n");
 		g_param.time_last_hxr = g_param.time_from_boot;
 	}
@@ -226,8 +227,9 @@ void steam_send_periodic_messages(void)
 		struct punch_packet packet;
 		packet.buf = sr_buff;
 		packet.size = sr_buff_length;
+		tx_rx_spectrum(1,0);
 		punch_write(packet);
-		// buffer_print_sr();
+		buffer_print_sr();
 		printf("Requesting the 10 sec message : SXR !!\n");
 		g_param.time_last_sxr = g_param.time_from_boot;
 	}

@@ -32,21 +32,26 @@
 *********************************************************************************************************
 */
 int buffer_write_hk(char insert, int count){
+    // printf("insert %u   %d", insert,count);
     if(count >= hk_buff_length)return -1;
-    hk_buff[count] = insert;
-    return count++;
+    hk_buff[count] = (unsigned char)insert;
+    count++;
+    // printf("count %d", count);
+    return count;
 }
 
 int buffer_write_hr(char insert, int count){
     if(count >= hr_buff_length)return -1;
-    hr_buff[count] = insert;
-    return count++;
+    hr_buff[count] = (unsigned char)insert;
+    count++;
+    return count;
 }
 
 int buffer_write_sr(char insert, int count){
     if(count >= sr_buff_length)return -1;
-    sr_buff[count] = insert;
-    return count++;
+    sr_buff[count] = (unsigned char)insert;
+    count++;
+    return count;
 }
 
 short checksum_hk(){

@@ -16,6 +16,10 @@
 #define hr_buff_length 3128
 #define sr_buff_length 3128
 
+// char send_buff[hk_buff_length];
+#define rx_buff_length 3144
+char recieve_buff[rx_buff_length];//for science for now
+
 char hk_buff[hk_buff_length];
 char hr_buff[hr_buff_length];
 char sr_buff[sr_buff_length];
