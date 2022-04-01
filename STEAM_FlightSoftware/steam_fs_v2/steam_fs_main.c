@@ -9,6 +9,8 @@
 
 #include "serial.h"
 #include "gpio.h"
+#include "rtc.h"
+#include "packet.h"
 
 
 /* macros */
@@ -47,12 +49,12 @@ typedef struct steam_xr_param
 typedef enum xr_type
 {
 	SOFT_XR = 1,
-	HARD_XR
+	HARD_XR = 2
 }xr_type_t;
 
 
 /* global varaibles */
-steam_xr_param_t g_param = {0,};
+steam_xr_param_t g_param;// = {0,0,0,0,0};
 
 /* function prototypes */
 /* steam app APIs */
@@ -196,18 +198,36 @@ void steam_send_periodic_messages(void)
 {
 	if(g_param.time_from_boot - g_param.time_last_hk >= EVERY_3_SEC)
 	{
+		payload_HK_dummy_packet();
+		struct punch_packet packet;
+		packet.buf = hk_buff;
+		packet.size = hk_buff_length;
+		punch_write(packet);
+		// buffer_print_hk();
 		g_param.time_last_hk = g_param.time_from_boot;
 		printf("Transmitting the 3 sec message !!\n");
 	}
 
 	if((xr_detector_get_status(HARD_XR) == true) && (g_param.time_from_boot - g_param.time_last_hxr >= EVERY_10_SEC))
 	{
+		payload_science_dummy_packet_hr();
+		struct punch_packet packet;
+		packet.buf = hr_buff;
+		packet.size = hr_buff_length;
+		punch_write(packet);
+		// buffer_print_hr();
 		printf("Requesting the 10 sec message : HXR !!\n");
 		g_param.time_last_hxr = g_param.time_from_boot;
 	}
 
 	if((xr_detector_get_status(SOFT_XR) == true) && (g_param.time_from_boot - g_param.time_last_sxr >= EVERY_10_SEC))
 	{
+		payload_science_dummy_packet_sr();
+		struct punch_packet packet;
+		packet.buf = sr_buff;
+		packet.size = sr_buff_length;
+		punch_write(packet);
+		// buffer_print_sr();
 		printf("Requesting the 10 sec message : SXR !!\n");
 		g_param.time_last_sxr = g_param.time_from_boot;
 	}

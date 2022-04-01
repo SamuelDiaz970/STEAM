@@ -6,11 +6,13 @@ struct punch_packet {
 };
 
 struct h_packet {
-	char example;
+	char *buf;
+	int size;
 };
 
 struct s_packet {
-	char example;
+	char *buf;
+	int size;
 };
 
 int setup_serial_interfaces();

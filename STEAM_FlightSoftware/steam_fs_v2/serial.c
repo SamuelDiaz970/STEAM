@@ -196,25 +196,115 @@ int punch_read(struct punch_packet *p)
 
 int h_write(struct h_packet p)
 {
-	// see punch_write
-	return 0;
+        if (h_dev_fd == -1)
+                return -1;
+
+        return write(h_dev_fd, p.buf, p.size);
 }
 
 int h_read(struct h_packet *p)
 {
-	// see punch_read
+	if (h_dev_fd == -1)
+                return -1;
+
+        char buf[MAX_PACKET_SIZE];
+        int length = 0;
+	int data_len = 0;
+        int rc;
+        char c;
+
+        while (1) {
+                rc = getbyte(h_dev_fd, &c);
+                if (rc == -1)
+                        return rc;
+                if (c == 0xf5)  // wait for start byte, modify according to protocol
+			length++;
+                        break;
+        }
+        while (1) {
+                rc = getbyte(h_dev_fd, &c);
+                if (rc == -1)
+                        return rc;
+
+		// set length of data in bytes
+		if (length == 4)
+			data_len = c << 8;
+		if (length == 5)
+			data_len |= c;
+
+		// at last byte, break
+		if (length == 7+data_len) {
+			buf[length] = c;
+			break;
+		}
+
+                buf[length] = c;
+                length++;
+                if (length >= MAX_PACKET_SIZE) {
+                        fprintf(stderr, "missed end of HXR packet, buffer is full\n");
+                        return -1;
+                }
+        }
+        p->buf = buf;
+        p->size = length;
+
 	return 0;
 }
 
 int s_write(struct s_packet p)
 {
-	// see punch_write
-	return 0;
+        if (s_dev_fd == -1)
+                return -1;
+
+        return write(s_dev_fd, p.buf, p.size);
 }
 
 int s_read(struct s_packet *p)
 {
-	// see punch_read
-	return 0;
-}
+	if (h_dev_fd == -1)
+                return -1;
 
+        char buf[MAX_PACKET_SIZE];
+        int length = 0;
+	int data_len = 0;
+        int rc;
+        char c;
+
+        while (1) {
+                rc = getbyte(s_dev_fd, &c);
+                if (rc == -1)
+                        return rc;
+                if (c == 0xf5)  // wait for start byte, modify according to protocol
+			length++;
+                        break;
+        }
+        while (1) {
+                rc = getbyte(s_dev_fd, &c);
+                if (rc == -1)
+                        return rc;
+
+		// set length of data in bytes
+		if (length == 4)
+			data_len = c << 8;
+		if (length == 5)
+			data_len |= c;
+
+		// at last byte, break
+		if (length == 7+data_len) {
+			buf[length] = c;
+			break;
+		}
+
+                buf[length] = c;
+                length++;
+                if (length >= MAX_PACKET_SIZE) {
+                        fprintf(stderr, "missed end of HXR packet, buffer is full\n");
+                        return -1;
+                }
+        }
+        p->buf = buf;
+        p->size = length;
+
+	return 0;
+	// see punch_read
+}

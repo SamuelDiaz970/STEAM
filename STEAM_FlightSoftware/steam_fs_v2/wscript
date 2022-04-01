@@ -28,7 +28,7 @@ def configure(conf):
 
 def build(bld):
     bld.program(
-            source=['steam_fs_main.c', 'rtc.c', 'adc.c', 'serial.c', 'gpio.c'],
+            source=['steam_fs_main.c', 'rtc.c', 'adc.c', 'serial.c', 'buffer.c', 'packet.c', 'gpio.c'],
             target=APPNAME,
             use=['SENSORS', 'GPIOD', 'M']
             )
