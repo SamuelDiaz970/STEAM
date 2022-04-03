@@ -1,0 +1,10 @@
+[Unit]
+Description=Flight Software Startup
+
+[Service]
+User=root
+ExecStart=/usr/bin/steam_fs.sh<script which needs to be executed>
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
