@@ -1,0 +1,11 @@
+[Unit]
+Description=Flight Software Startup
+
+[Service]
+User=root
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/steam_fs > /dev/null
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
