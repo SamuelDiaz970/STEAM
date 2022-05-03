@@ -16,6 +16,9 @@ static struct gpiod_chip *chip_sxr = NULL;
 static struct gpiod_line *hxr_gpio = NULL;
 static struct gpiod_line *sxr_gpio = NULL;
 
+/**
+ * It opens the gpio chip, gets the line, and requests it to be an output
+ */
 void gpio_init(void)
 {
 	chip_sxr = gpiod_chip_open_by_name(SXR_GPIOCHIP_ID);
@@ -29,6 +32,13 @@ void gpio_init(void)
     gpiod_line_request_output(hxr_gpio, "hxr gpio", 0);
 }
 
+/**
+ * Gpio_config_sxr(true) turns on the SXR, gpio_config_sxr(false) turns it off
+ * 
+ * @param on true or false
+ * 
+ * @return The return value is the error code.
+ */
 int gpio_config_sxr(bool on)
 {
 
@@ -49,6 +59,13 @@ int gpio_config_sxr(bool on)
     return 0;
 }
 
+/**
+ * Gpio_config_hxr(true) turns on the GPIO pin, gpio_config_hxr(false) turns it off
+ * 
+ * @param on true or false
+ * 
+ * @return The return value is the error code.
+ */
 int gpio_config_hxr(bool on)
 {
 
@@ -69,6 +86,9 @@ int gpio_config_hxr(bool on)
     return 0;
 }
 
+/**
+ * Gpio_init() initializes the GPIO pins and gpio_deinit() releases the GPIO pins
+ */
 void gpio_deinit(void)
 {
     if(hxr_gpio != NULL)

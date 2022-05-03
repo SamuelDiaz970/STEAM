@@ -22,6 +22,16 @@ static int h_dev_fd = -1;
 static int s_dev_fd = -1;
 static int punch_dev_fd = -1;
 
+/**
+ * It sets the serial port to 8-bit characters, no parity, one stop bit, no flow control, and a read
+ * timeout of 0.5 seconds
+ * 
+ * @param fd file descriptor
+ * @param speed Baud rate such as 9600 or 115200 or 460800 or 921600
+ * @param parity 0 = none, 1 = odd, 2 = even
+ * 
+ * @return error code
+ */
 static int set_interface_attribs(int fd, int speed, int parity)
 {
 	struct termios tty;
@@ -54,6 +64,15 @@ static int set_interface_attribs(int fd, int speed, int parity)
 	return 0;
 }
 
+/**
+ * If should_block is non-zero, the function sets the file descriptor fd to blocking mode. Otherwise,
+ * it sets the file descriptor to non-blocking mode
+ * 
+ * @param fd The file descriptor of the serial port.
+ * @param should_block 1 for blocking, 0 for non-blocking
+ * 
+ * @return error code
+ */
 static void set_blocking(int fd, int should_block)
 {
 	struct termios tty;
@@ -70,6 +89,14 @@ static void set_blocking(int fd, int should_block)
 		fprintf(stderr, "error %d setting term attributes", errno);
 }
 
+/**
+ * > Read one byte from the file descriptor fd into the character c
+ * 
+ * @param fd file descriptor
+ * @param c the character to be read
+ * 
+ * @return the number of bytes read.
+ */
 static int getbyte(int fd, char *c)
 {
 	
@@ -85,6 +112,13 @@ static int serial_write()
 	return 0;
 }
 
+/**
+ * Open the device with the given name, and return the file descriptor
+ * 
+ * @param name The name of the device to open.
+ * 
+ * @return The file descriptor for the device.
+ */
 static int open_dev(const char* name)
 {
 	int fd = open(name, O_RDWR | O_SYNC);
@@ -94,6 +128,11 @@ static int open_dev(const char* name)
 	}
 }
 
+/**
+ * It opens the serial ports, sets the baud rate, and sets the blocking mode
+ * 
+ * @return error code
+ */
 int setup_serial_interfaces()
 {
 	int rc , err;
@@ -146,6 +185,11 @@ int setup_serial_interfaces()
 	return rc;
 }
 
+/**
+ * It closes the serial ports
+ * 
+ * @return The file descriptor of the serial port.
+ */
 int close_serial_interfaces()
 {
 	if (s_dev_fd != -1) {
@@ -163,6 +207,13 @@ int close_serial_interfaces()
 	return 0;
 }
 
+/**
+ * It writes a packet to the device
+ * 
+ * @param p The packet to be sent.
+ * 
+ * @return error code
+ */
 int punch_write(struct punch_packet p)
 {
 	if (punch_dev_fd == -1)
@@ -171,6 +222,13 @@ int punch_write(struct punch_packet p)
 	return write(punch_dev_fd, p.buf, p.size);
 }
 
+/**
+ * It reads the data from the serial port and stores it in a buffer
+ * 
+ * @param p pointer to the packet structure
+ * 
+ * @return the number of bytes read.
+ */
 int punch_read(struct punch_packet *p)
 {
 	printf("here2\n");
@@ -331,6 +389,13 @@ int punch_read(struct punch_packet *p)
 	return 0;
 }
 
+/**
+ * It writes a packet to the device
+ * 
+ * @param p The packet to be sent.
+ * 
+ * @return error code
+ */
 int h_write(struct h_packet p)
 {
         if (h_dev_fd == -1)
@@ -339,6 +404,13 @@ int h_write(struct h_packet p)
         return write(h_dev_fd, p.buf, p.size);
 }
 
+/**
+ * Reads a packet from the serial port and stores it in a buffer
+ * 
+ * @param p pointer to a struct h_packet
+ * 
+ * @return error code
+ */
 int h_read(struct h_packet *p)
 {
 	if (h_dev_fd == -1)
@@ -389,6 +461,13 @@ int h_read(struct h_packet *p)
 	return 0;
 }
 
+/**
+ * It writes the packet to the device
+ * 
+ * @param p The packet to be sent.
+ * 
+ * @return error code
+ */
 int s_write(struct h_packet p)
 {
         if (s_dev_fd == -1)
@@ -397,6 +476,13 @@ int s_write(struct h_packet p)
         return write(s_dev_fd, p.buf, p.size);
 }
 
+/**
+ * It reads the data from the serial port and stores it in a buffer
+ * 
+ * @param p pointer to a struct h_packet
+ * 
+ * @return error code
+ */
 int s_read(struct h_packet *p)
 {
 	if (s_dev_fd == -1)

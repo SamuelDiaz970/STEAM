@@ -6,6 +6,14 @@ int science_pckt_rate;
 int housekeeping_pckt_rate;
 
 int set_hk = 0;
+/**
+ * "If the variable set_hk is 0, set the variable housekeeping_pckt_rate to 3 and set the variable
+ * set_hk to 1.  Return the value of housekeeping_pckt_rate."
+ * 
+ * The function is called in the main function as follows:
+ * 
+ * @return The value of the variable housekeeping_pckt_rate.
+ */
 int get_hk_rate(){
     // int i = 0;
     if(set_hk == 0){
@@ -15,6 +23,12 @@ int get_hk_rate(){
     return housekeeping_pckt_rate;
 }
 int set_sci = 0;
+/**
+ * If the variable set_sci is 0, set the variable science_pckt_rate to 10 and set the variable set_sci
+ * to 1.  Return the variable science_pckt_rate.
+ * 
+ * @return The value of science_pckt_rate.
+ */
 int get_sci_rate(){
     // int i = 0;
     if(set_sci == 0){
@@ -107,6 +121,11 @@ int Command_Reject_Count = 0;
 int Cmd_Echo_Count = 0;
 char Last_OpCode = 0;
 
+/**
+ * This function returns the number of times the command accept packet has been received.
+ * 
+ * @return The number of times the command was accepted.
+ */
 int get_cmd_accept(){
     // int i = 0;
     // if(set_hk == 0){
@@ -116,6 +135,11 @@ int get_cmd_accept(){
     return Command_Accept_Count;
 }
 
+/**
+ * If the housekeeping packet rate is set to 3, then return the Command_Reject_Count.
+ * 
+ * @return The value of the variable Command_Reject_Count.
+ */
 int get_cmd_reject(){
     // int i = 0;
     // if(set_hk == 0){
@@ -125,6 +149,11 @@ int get_cmd_reject(){
     return Command_Reject_Count;
 }
 
+/**
+ * It returns the last opcode.
+ * 
+ * @return The last opcode.
+ */
 int get_last_opcode(){
     // int i = 0;
     // if(set_hk == 0){
@@ -134,6 +163,13 @@ int get_last_opcode(){
     return Last_OpCode;
 }
 
+/**
+ * It takes a packet, checks the checksum, and then calls the appropriate function based on the command
+ * 
+ * @param command_buf a struct that contains a buffer and a size
+ * 
+ * @return The return value is the status of the command.
+ */
 int command_handle(struct punch_packet command_buf){
 	buffer_print(command_buf.buf,command_buf.size);
     int command = 0;
@@ -264,22 +300,11 @@ int command_handle(struct punch_packet command_buf){
 }
 
 
-
-
-/***************************************************************************//**
- * @brief NOOP Command From Spacecraft
- *   
- *
- * @details
- * 	 
- *
- * @note
- *	 
- * @param[in] variable_name
- *  
- *
- ******************************************************************************/
-
+/**
+ * It prints "NOOP command Recieved"
+ * 
+ * @return The return value of the function is being returned.
+ */
 int noop(){
     printf("NOOP command Recieved");
     return 0;
@@ -303,19 +328,15 @@ int noop(){
 
 // }
 
-/***************************************************************************//**
- * @brief set steam time Command From Spacecraft
- *   
- *
- * @details
- * 	 
- *
- * @note
- *	 
- * @param[in] variable_name
- *  
- *
- ******************************************************************************/
+/**
+ * It takes a packet, and sends a packet back to the client with the same data, but with a different
+ * header
+ * 
+ * @param p the packet that was received
+ * @param status 0 = success, 1 = failure
+ * 
+ * @return a struct punch_packet.
+ */
 void echo_packet(struct punch_packet p, int status){
     char buffer[40];
     int length = 0;
@@ -420,20 +441,14 @@ void echo_packet(struct punch_packet p, int status){
 // 29DE 2D9E
 // 10 39 00 00 00 03 09 00 55 00
 // 39
-/***************************************************************************//**
- * @brief set steam time Command From Spacecraft
- *   
- *
- * @details
- * 	 
- *
- * @note
- *	 
- * @param[in] variable_name
- *  
- *
- ******************************************************************************/
-
+/**
+ * It takes a struct containing a buffer of bytes, and sets the system time to the time contained in
+ * the buffer.
+ * 
+ * @param p is a struct that contains the packet that was received.
+ * 
+ * @return The return value is the number of bytes read.
+ */
 
 int set_steam_time(struct punch_packet p){
 
@@ -622,20 +637,16 @@ int set_steam_time(struct punch_packet p){
 
 // }
 
-/***************************************************************************//**
- * @brief set housekeeping packet rate Command From Spacecraft
- *   
- *
- * @details
- * 	 
- *
- * @note
- *	 
- * @param[in] variable_name
- *  
- *
- ******************************************************************************/
+
 // 10 39 00 00 00 03 09 00 55 00
+/**
+ * It takes a struct, checks the size of the struct, and then sets a global variable to the value of
+ * the struct.
+ * 
+ * @param p a struct that contains the packet data
+ * 
+ * @return the value of the housekeeping_pckt_rate variable.
+ */
 int Set_HK_Packet_Rate(struct punch_packet p){
     if (p.size != 10) return 1;
     // printf("HK rate     %d\n", housekeeping_pckt_rate);
@@ -646,20 +657,16 @@ int Set_HK_Packet_Rate(struct punch_packet p){
     return 0;
 }
 
-/***************************************************************************//**
- * @brief set science packet rate Command From Spacecraft
- *   
- *
- * @details
- * 	 
- *
- * @note
- *	 
- * @param[in] variable_name
- *  
- *
- ******************************************************************************/
+
 // 10 48 00 00 00 03 0F 00 6A 00
+/**
+ * If the size of the packet is not 10, return 1. Otherwise, set the science packet rate to the value
+ * of the 7th and 8th bytes of the packet.
+ * 
+ * @param p the packet that was received
+ * 
+ * @return the value of the science_pckt_rate variable.
+ */
 int Set_SCI_Packet_Rate(struct punch_packet p){
     if (p.size != 10) return 1;
     science_pckt_rate = p.buf[6] | p.buf[7] << 8;
@@ -702,19 +709,7 @@ int Set_SCI_Packet_Rate(struct punch_packet p){
 
 // }
 
-/***************************************************************************//**
- * @brief switch power x123 Command From Spacecraft
- *   
- *
- * @details
- * 	 
- *
- * @note
- *	 
- * @param[in] variable_name
- *  
- *
- ******************************************************************************/
+
 // HARD ON
 // 10 96 00 00 00 02 01 A9 00
 // HARD OFF
@@ -723,6 +718,13 @@ int Set_SCI_Packet_Rate(struct punch_packet p){
 // 10 96 00 00 00 02 11 B9 00
 // SOFT OFF
 // 10 96 00 00 00 02 10 B8 00
+/**
+ * It turns on and off the X-ray detectors
+ * 
+ * @param p a struct that contains the packet received from the client
+ * 
+ * @return The return value is the error code.
+ */
 int Switch_Power_X123(struct punch_packet p){
     if (p.size != 9) return 1;
     unsigned char on_off = p.buf[6];

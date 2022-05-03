@@ -267,6 +267,14 @@ void payload_science_dummy_packet_sr(){
 	
 }
 
+/**
+ * It takes a spectrometer number, formats data to be sent to punch, and then writes the response to
+ * a buffer
+ * 
+ * @param spectrometer the spectrometer number (1 or 2)
+ * 
+ * @return The return value is the error code.
+ */
 int payload_science_packet_sr(int spectrometer){
 	int buff = 2;
 	packet_head(buff, 1, science_packet_apid, sr_packet_count, sr_buff_length - 4);
@@ -339,6 +347,14 @@ int payload_science_packet_sr(int spectrometer){
 	return 0;
 }
 
+/**
+ * It takes a spectrometer number, formats data to be sent to punch, and then writes the response to
+ * a buffer
+ * 
+ * @param spectrometer the spectrometer number (1 or 2)
+ * 
+ * @return The return value is the error code.
+ */
 int payload_science_packet_hr(int spectrometer){
 	int buff = 1;
 	packet_head(buff,1, science_packet_apid, hr_packet_count, hr_buff_length-4);
@@ -458,7 +474,12 @@ void payload_science_dummy_packet_hr(){
 }
 
 
-
+/**
+ *  Formats housekeeping dummy data to be sent to punch, and then writes the response to
+ * a buffer
+ *  
+ * @return The return value is the error code.
+ */
 void payload_HK_dummy_packet(){
 	int buff = 0;
 	packet_head(buff,1, housekeeping_packet_apid, hk_packet_count, hk_buff_length - 4);

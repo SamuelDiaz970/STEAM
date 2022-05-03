@@ -3,6 +3,15 @@
 char hr_spec_response_buffer[rx_buff_length];
 char sr_spec_response_buffer[rx_buff_length];
 
+/**
+ * It takes a packet, sends it to the spectrometer, and then reads the response into the same packet
+ * 
+ * @param spectrometer 0 for hardware, 1 for software
+ * @param type 0 = 1024-channel spectrum
+ * @param pckt a pointer to a struct h_packet
+ * 
+ * @return a pointer to a struct.
+ */
 int tx_rx_spectrum(bool spectrometer, char type, struct h_packet *pckt){
     char buffer[8];
     int response_length = 0;
@@ -68,6 +77,26 @@ int tx_rx_spectrum(bool spectrometer, char type, struct h_packet *pckt){
 }
 
 
+/**
+ * This function sends a packet to the spectrometer and then reads the response. 
+ * 
+ * The function takes a single argument, a boolean value that determines whether the function is
+ * communicating with the spectrometer through the hard or soft serial port. 
+ * 
+ * The function first creates a packet to send to the spectrometer. The packet is a 9 byte array. The
+ * first 8 bytes are the packet header and the last byte is the checksum. The checksum is calculated by
+ * adding up the first 8 bytes and then taking the two's complement of the sum. 
+ * 
+ * The function then sends the packet to the spectrometer. If the spectrometer is connected to the hard
+ * serial port, the function calls the h_write function. If the spectrometer is connected to the soft
+ * serial port, the function calls the s_write function. 
+ * 
+ * The function then reads the response from the spectrometer. If the spectrometer is connected to the
+ * 
+ * @param spectrometer 0 for hard, 1 for soft
+ * 
+ * @return No response
+ */
 void echo_pckt(bool spectrometer){
     
     

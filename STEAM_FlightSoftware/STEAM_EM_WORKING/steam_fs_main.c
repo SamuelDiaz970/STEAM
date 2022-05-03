@@ -164,6 +164,13 @@ error_main:
 
 }
 
+/**
+ * The function takes a detector type as an argument and turns on the detector
+ * 
+ * @param det the detector type (SOFT_XR or HARD_XR)
+ * 
+ * @return 0
+ */
 int xr_detector_turn_on(xr_type_t det)
 {
 	switch(det)
@@ -188,6 +195,13 @@ int xr_detector_turn_on(xr_type_t det)
 	return 0;
 }
 
+/**
+ * The function takes a detector type as an argument and turns off the detector
+ * 
+ * @param det the detector type (SOFT_XR or HARD_XR)
+ * 
+ * @return The return value is an integer.
+ */
 int xr_detector_turn_off(xr_type_t det)
 {
 	switch(det)
@@ -209,6 +223,13 @@ int xr_detector_turn_off(xr_type_t det)
 	return 0;
 }
 
+/**
+ * It returns the status of the detector
+ * 
+ * @param det The detector type.
+ * 
+ * @return The status of the detector.
+ */
 bool xr_detector_get_status(xr_type_t det)
 {
 	switch(det)
@@ -222,6 +243,10 @@ bool xr_detector_get_status(xr_type_t det)
 	}
 }
 
+/**
+ * It initializes the global variable g_param.time_at_boot to 0, and then initializes the other three
+ * global variables to the value of g_param.time_at_boot
+ */
 int steam_timestamp_init(void)
 {
 	g_param.time_at_boot = 0;
@@ -230,6 +255,11 @@ int steam_timestamp_init(void)
 	g_param.time_last_hk  = g_param.time_at_boot;
 }
 
+/**
+ * It checks if the time since the last housekeeping packet was sent is greater than the housekeeping
+ * packet rate, and if so, it sends a housekeeping packet. It does the same for the hard and soft X-ray
+ * packets
+ */
 void steam_send_periodic_messages(void)
 {
 	if(g_param.time_from_boot - g_param.time_last_hk >= housekeeping_pckt_rate_)
@@ -289,6 +319,10 @@ void steam_send_periodic_messages(void)
 // 	}
 // }
 
+/**
+ * It checks if there is any incoming message from the network, if yes, it parses the message and
+ * performs the required actions
+ */
 void steam_process_incoming_messages(void)
 {
 	/* process only if there is an incoming message */
@@ -324,6 +358,9 @@ void steam_process_incoming_messages(void)
 
 
 /* initialize a one second timer */
+/**
+ * The function sets up a timer that will call the function timer_1sec_handle every second
+ */
 int timer_init(void)
 {
 	struct itimerval itv;
@@ -339,12 +376,22 @@ int timer_init(void)
 	setitimer(ITIMER_REAL, &itv, NULL);
 }
 
+/**
+ * The function is called by the timer_1sec_handle() function. Adds one to the timer count
+ * 
+ * @param sig The signal number.
+ */
 void timer_1sec_handle(int sig)
 {
 	g_param.time_from_boot++;
 	printf("system_time_from_boot %llu sec\n",g_param.time_from_boot);
 }
 
+/**
+ * > This function returns the current time in microseconds since the system booted
+ * 
+ * @return The time from boot.
+ */
 uint64_t timer_get_time_now(void)
 	{
 		return g_param.time_from_boot;
