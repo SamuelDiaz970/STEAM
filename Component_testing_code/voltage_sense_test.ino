@@ -8,7 +8,7 @@
 #define ADC_REF     3.3 // supplying ADC 3.3V
 
 #define R1          100000.0 // high side resistor in voltage sense circuit, 470k for 28V sense
-#define R2          20000.0  // low side resistor in voltage sense circuit
+#define R2          22000.0  // low side resistor in voltage sense circuit
 
 void setup() {
   Wire.begin();
@@ -48,7 +48,7 @@ void loop() {
     v[i] = data[i]/4095.0*ADC_REF;
 
     // convert from ADC voltage to input (measured) voltage
-    v_in[i] = v[i]/R2 + (R1+R2);
+    v_in[i] = v[i]/R2 * (R1+R2);
   }
   
   // Output data to serial monitor
@@ -63,8 +63,8 @@ void loop() {
   Serial.print("Input voltage 0: ");
   Serial.println(v_in[0]);
   Serial.print("Input voltage 1: ");
-  Serial.println(v_in[0]);
+  Serial.println(v_in[1]);
 
   Serial.println();
-  delay(300);
+  delay(3000);
 }
