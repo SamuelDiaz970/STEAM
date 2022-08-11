@@ -47,7 +47,7 @@ void loop() {
   // Read 8 bytes of data
   while (Wire.available() < 8);
 
-  int r_tot; // use to find total resistance, then find thermal resistance
+  double r_tot; // use to find total resistance, then find thermal resistance
 
   for(int i=0; i<2; i++) {
     // read first byte
@@ -60,7 +60,7 @@ void loop() {
     v[i] = data[i]/4095.0*ADC_REF;
 
     // calculate resistance of thermistor
-    r_tot = 5 / (v[i]/R1);
+    r_tot = 5.0 / (v[i]/R2);
     r_therm[i] = r_tot - R1 - R2;
 
     temp[i] = 1/(log(r_therm[i]/R0)/B+1/298.15);
@@ -91,5 +91,5 @@ void loop() {
 //  Serial.println(temp_f[3]);
 
   Serial.println();
-  delay(10000); // wait 10 sec before next reading
+  delay(2000); // wait 2 sec before next reading
 }
