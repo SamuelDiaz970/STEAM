@@ -2,11 +2,13 @@
 #include <math.h>
 #define Addr 0x34
 
-// configuration bytes
+// configuration bytes--last bit signifies single-ended mode
 #define AIN0_CONFIG 0b00000001
-#define AIN1_CONFIG 0b00000011  // last bit signifies single-ended mode
+#define AIN1_CONFIG 0b00000011
+#define AIN2_CONFIG 0b00000101
+#define AIN3_CONFIG 0b00000111
 
-#define B 3978 // constant [K]
+#define B 3943 // constant [K]
 
 // thermistor constants (unused)
 #define A1 0.003354016
@@ -14,8 +16,11 @@
 #define C1 0.000002620131
 #define D1 6.383091/100000000
 
-#define R0 10000.0 // thermistor reference value
-#define R1 10000.0 // 10k resistor in series with thermistor
+#define R0 30000.0 // thermistor reference value
+#define R1 22000.0 // 22k resistor in series with thermistor (at 5V)
+#define R2 15000.0 // 15k resistor in series with thermistor (at GND)
+
+#define ADC_REF 3.3 // is this 2.048
 
 void setup() {
   Wire.begin();
@@ -31,16 +36,18 @@ void loop() {
   double r_therm[4], temp[4], temp_c[4], temp_f[4];
   // Start I2C transmission
   Wire.beginTransmission(Addr);
-  // Channel Selection
-  Wire.write(AIN1_CONFIG);
+  // Channel Selection (AIN3)
+  Wire.write(AIN3_CONFIG);
   // Stop I2C transmission
   Wire.endTransmission();
   
-  // Request 3 bytes of data
-  Wire.requestFrom(Addr, 4);
+  // Request 8 bytes of data
+  Wire.requestFrom(Addr, 8);
   
-  // Read 3 bytes of data
-  while (Wire.available() < 4);
+  // Read 8 bytes of data
+  while (Wire.available() < 8);
+
+  int r_tot; // use to find total resistance, then find thermal resistance
 
   for(int i=0; i<2; i++) {
     // read first byte
@@ -50,33 +57,39 @@ void loop() {
   
     data[i] &= 0xfff;
 
-    // 5V pin on Arduino outputs = 5.05 V
-    v[i] = data[i]/4095.0*5.05;
+    v[i] = data[i]/4095.0*ADC_REF;
 
-    r_therm[i] = R1*v[i]/(5.05-v[i]); // calculate resistance of thermistor
-    //temp[i] = 1/(A1 + B1*log(r_therm[i]/R_REF) + C1*pow(log(r_therm[i]/R_REF), 2)
-    //              + D1*pow(log(r_therm[i]/R_REF), 3));
-    //temp[i] = B/(log(r_therm[i]/(R0*exp(-B/298.15))));
+    // calculate resistance of thermistor
+    r_tot = 5 / (v[i]/R1);
+    r_therm[i] = r_tot - R1 - R2;
+
     temp[i] = 1/(log(r_therm[i]/R0)/B+1/298.15);
 
     temp_c[i] = temp[i] - 273.15;       // convert to celsius
-    temp_f[i] = 9.0/5.0*temp_c[i] + 32; // convert to fahrenheit
+//    temp_f[i] = 9.0/5.0*temp_c[i] + 32; // convert to fahrenheit
   }
   
   // Output data to serial monitor
   Serial.print("AIN0 voltage : ");
   Serial.println(v[0]);
-  Serial.print("AIN0 temp (F): ");
-  Serial.println(temp_f[0]);
+  Serial.print("AIN0 temp (C): ");
+  Serial.println(temp_c[0]);
   
   Serial.print("AIN1 voltage : ");
   Serial.println(v[1]);
-  Serial.print("AIN1 temp (F): ");
-  Serial.println(temp_f[1]);
+  Serial.print("AIN1 temp (C): ");
+  Serial.println(temp_c[1]);
   
-  //Serial.print("AIN2 voltage: ");
-  //Serial.println(v[2]);
+//  Serial.print("AIN2 voltage : ");
+//  Serial.println(v[2]);
+//  Serial.print("AIN2 temp (F): ");
+//  Serial.println(temp_f[2]);
+//
+//  Serial.print("AIN3 voltage : ");
+//  Serial.println(v[3]);
+//  Serial.print("AIN3 temp (F): ");
+//  Serial.println(temp_f[3]);
 
   Serial.println();
-  delay(300);
+  delay(10000); // wait 10 sec before next reading
 }
